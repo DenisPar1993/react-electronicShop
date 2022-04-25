@@ -1,0 +1,53 @@
+.basket__item{
+    display: flex;
+    border-bottom: 1px solid #000;
+    margin-bottom: 20px;
+    padding-bottom: 39px;
+    padding-top: 20px;
+}
+.basket__name{
+    font-size: 15px;
+    font-weight: 700;
+    width: 225px;
+    margin-left: 43px;
+    margin-top: 15px;
+}
+.basket__price{
+    margin-left: 40px;
+    margin-top: 15px;
+    font-weight: 600;
+font-size: 25px;
+}
+.basket__wrap{
+    display:flex;
+    min-height: 60vh;
+}
+.basket__order{
+    width: 307px;
+    height: 320px;
+    padding: 30px;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+.basket__order-title{
+    font-weight: 600;
+font-size: 30px;
+margin-bottom: 32px;
+}
+.basket__order-count{
+    font-size: 15px;
+    margin-bottom: 27px;
+    span{
+        font-weight: 600;
+    }
+}
+.basket__order-summ{
+    font-weight: 700;
+    font-weight: 18px;
+    span{
+        margin-top: 10px;
+        margin-bottom: 30px;
+        font-size: 25px;
+        display: block;
+    }
+}

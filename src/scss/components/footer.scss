@@ -1,0 +1,20 @@
+@import '../variables.scss';
+.footer{
+    background-color: $color;
+}
+.footer__wrap{
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 0;
+}
+.footer__title{
+    font-size: 35px;
+    font-weight: 600;
+    color: #fff;
+}
+.footer__social{
+    display: flex;
+}
+.social-pic{
+    margin-left: 26px;
+}

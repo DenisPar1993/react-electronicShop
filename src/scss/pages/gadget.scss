@@ -1,0 +1,73 @@
+.gadget__wrap{
+    display: flex;
+}
+.descr-title{
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 70px;
+}
+.descr-wrap__item{
+    display: flex;
+    margin-bottom: 10px;
+}
+.descr-name__item{
+    font-size: 20px;
+    font-weight: 500;
+    color: gray;
+    width: 292px;
+}
+.descr-value__item{
+    font-size: 20px;
+    font-weight: 500;
+    max-width: 192px;
+}
+.gadget-img{
+    padding-top: 50px;
+}
+.gadget__descr{
+    padding-right: 40px;
+    border-right: 1px solid #000;
+}
+.descr-title-price{
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 40px;
+}
+.descr__price{
+    font-size: 34px;
+    font-weight: 700;
+}
+.descr__cart-block{
+    padding-left: 30px;
+}
+.plus, .minus{
+    width: 43px;
+    height: 43px;
+    background-color: transparent;
+    border: 3px solid $color;
+    border-radius: 7px;
+    font-size: 34px;
+    cursor: pointer;
+}
+.count{
+    width: 122px;
+    height: 43px;
+    margin: 14px;
+    background-color: transparent;
+    border: 3px solid $color;
+    border-radius: 7px;
+    font-size: 34px; 
+    cursor: pointer;
+}
+.cart__button{
+    position: relative;
+    padding-left: 60px;
+}
+.descr-heart{
+position: absolute;
+left: -4px;
+top: -4px;
+}
+.btn-desc{
+    width: 177px;
+}

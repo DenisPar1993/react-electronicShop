@@ -1,0 +1,14 @@
+.gadget__wrap{
+    min-height: 100vh;
+    
+}
+.gadget__items{
+    height: 100%;
+    display: flex; 
+    flex-wrap: wrap;
+    gap:20px;
+    margin: 20px 0;
+}
+.gadget__cart{
+    margin-bottom: 30px;
+}

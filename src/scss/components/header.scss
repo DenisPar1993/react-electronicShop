@@ -1,0 +1,42 @@
+@import '../variables.scss';
+
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 23px 0 10px;
+    }
+    .header-tel{
+        color: black;
+        font-weight: 700;
+        font-family: 'Roboto', sans-serif;
+        font-size: 22px;
+        display: inline-block;
+        position: relative;
+        top: -22px;
+    }
+    .header-tel__text{
+        font-family: 'Roboto', sans-serif;
+        font-size: 21px;
+        color: black;
+        position: relative;
+        top: -10px;
+    }
+    .menu{
+        display: flex;
+        justify-content: center;
+        padding-top: 75px;
+        padding-bottom: 50px;
+        gap: 60px;
+        background-color: $color;
+    }
+    .menu__item{
+        color: #fff;
+        font-size: 22px;
+        font-weight: 700;
+
+
+    }
+    .fav{
+        margin-right: 26px;
+    }
