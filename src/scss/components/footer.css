@@ -1,0 +1,30 @@
+.footer {
+  background-color: #1E81CE;
+}
+
+.footer__wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 80px 0;
+}
+
+.footer__title {
+  font-size: 35px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.footer__social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.social-pic {
+  margin-left: 26px;
+}
+/*# sourceMappingURL=footer.css.map */

@@ -1,5 +1,7 @@
-.gadget__wrap{
-    min-height: 100vh;
+.gadget-one__wrap{
+    min-height: calc(100vh - 215px);
+    margin-top: 250px;
+    display: flex;
     
 }
 .gadget__items{

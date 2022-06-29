@@ -1,14 +1,33 @@
 import SideFilter from "../components/SideFilter";
 import Cart from "../components/Cart";
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useRef } from 'react';
+import filtIcon from '../assist/filters.svg'
 import { callBackendAPI } from "../service";
 import { fetchWatch } from "../Slices/WatchSlice";
 import { useDispatch,useSelector } from "react-redux";
 import { watchFilter,watchPrice } from "../Slices/WatchSlice";
 import { filtItem,filtPrice } from '../service';
+import Spinner from "../components/Spinner";
+import ErrorMessage from "../components/ErrorMessage";
 
  const Watch = () => {
+  const inputEl = useRef(null);
+  const [wrapHeight,setWrapHeight]=useState(0)
+  const [openFilt,setOpenFilt]=useState(true)
+  const [price, setPrice] = useState(null)
+  const [filt, setFilt] = useState([])
+  const screenWidth = window.screen.width
+  useEffect(()=>{
+    if(screenWidth<=990){
+        setOpenFilt(true)
+    setWrapHeight(inputEl.current.clientHeight)
+    }
+ watchFilter(null)
+},[])
    const dispatch =useDispatch();
+   const fav=useSelector(state=>state.favorite.favorite)
+   const loading = useSelector(state=>state.watch.loading)
+    const error = useSelector(state=>state.watch.error)
    const watch=useSelector(state=>{
      console.log(state.watch);
      let watchArr= state.watch
@@ -20,14 +39,14 @@ import { filtItem,filtPrice } from '../service';
     // let sm = state.smartphones
     // console.log('price  ',sm.priceFilter);
     // let bau=state.smartphones.smartphones
-    if(watchArr.filterWatch.length>0 || watchArr.priceFilter){
-    if(watchArr.filterWatch.length>0){
+    if(filt|| price){
+    if(filt.length>0){
       console.log('work  ',resArr);
-        resArr= filtItem(watchArr.watch,watchArr.filterWatch)
+        resArr= filtItem(watchArr.watch,filt)
         
     }
-    if(watchArr.priceFilter){
-        resArr= filtPrice(resArr,watchArr.priceFilter)
+    if(price){
+        resArr= filtPrice(resArr,price)
     }
       
     
@@ -40,14 +59,27 @@ import { filtItem,filtPrice } from '../service';
    })
    const takePrice=(value)=>{
     console.log(value);
-    dispatch(watchPrice(value))
+    setPrice(value)
 }
 const takeFilter=(value)=>{
     console.log('value ', value);
-    dispatch(watchFilter(value))
+   setFilt(value)
 }
-   const [name,setName] =useState(null)
+const clearFilt=()=>{
+  setPrice(null)
+  setFilt([])
+}
+const closeFilt=(value)=>{
+  setOpenFilt(value)
+}
 
+   const [name,setName] =useState(null)
+   useEffect(()=>{
+    if(screenWidth<=990){
+        document.querySelector('body').style.overflow=!openFilt?'hidden':'auto';
+    }
+
+},[openFilt])
 
       useEffect(() => {
         dispatch(fetchWatch())
@@ -55,17 +87,33 @@ const takeFilter=(value)=>{
     }, [])
   return (
     <div className="container">
-    <div className='gadget__wrap'>
-        <SideFilter filterFunc={takeFilter} priceFunc={takePrice}/>
+      {error&&<ErrorMessage/>}
+            {loading&&<Spinner/>}
+            {!(loading||error)&&<div 
+            ref={inputEl} 
+            className='gadget__wrap'>
+        <SideFilter 
+        closeFilt={closeFilt}
+        openFilt={openFilt}
+        clearFilt={clearFilt}
+        filterFunc={takeFilter}
+        wrapHeight={wrapHeight}
+        priceFunc={takePrice} 
+        />
+        {openFilt&&screenWidth<=990&&<img onClick={()=>setOpenFilt(!openFilt)} className='filt-button' src={filtIcon}/>}
+                {!openFilt&&<div
+                 className='blur'
+                 
+                 onClick={()=>setOpenFilt(!openFilt)}></div>}
         <div className="gadget__items">
         {watch && watch.map((item, i) => {
     return (
-      <Cart key={i} name={item.name} price={item.price} img={item.img} />
+      <Cart key={i} id={item.id}  fav={fav[item.id]} name={item.name} price={item.price} img={item.img} group='watch' />
     )
   })}
             
         </div>
-    </div>
+    </div>}
 </div>
   )
 }

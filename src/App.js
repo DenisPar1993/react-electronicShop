@@ -11,7 +11,10 @@ import Pads from './Pages/Pads';
 import BasketPage from './Pages/BasketPage';
 import Watch from './Pages/Watch';
 import Music from './Pages/Music';
+import FavoritePage from './Pages/FavoritePage';
 import { BrowserRouter,Routes, Route } from "react-router-dom";
+import WatchPage from './Pages/WatchPage';
+import MusicPage from './Pages/MusicPage';
 
 
 function App() {
@@ -26,8 +29,11 @@ function App() {
        <Route exact path="/pads" element={<Pads />}/>
        <Route exact path="/watch" element={<Watch />}/>
        <Route exact path="/music" element={<Music />}/>
-       <Route exact path="/gadget" element={<GadgetPage />}/>
+       <Route exact path="/gadget/:id" element={<GadgetPage />}/>
+       <Route exact path="/watch/:id" element={<WatchPage />}/>
+       <Route exact path="/music/:id" element={<MusicPage />}/>
        <Route exact path="/basket" element={<BasketPage />}/>
+       <Route exact path="/favorite" element={<FavoritePage />}/>
      </Routes>
      <Footer/>
      </BrowserRouter>

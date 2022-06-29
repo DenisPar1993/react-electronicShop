@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
 
- const SideFilter = ({filterFunc,priceFunc}) => {
+ const SideFilter = ({filterFunc,priceFunc,openFilt,wrapHeight,closeFilt,clearFilt}) => {
+  console.log(wrapHeight,'   sidedsadas');
+  const screenWidth = window.screen.width
    const [beginPrice, setBeginPrice]=useState('')
    const [endPrice, setEndPrice]=useState('')
    const [valCompany, setValCompany]=useState([])
@@ -28,7 +30,7 @@ const addFilt=()=>{
   const takeVal=(e)=>{
     const arr=[]
     const val= filtComp
-    
+    console.log(e.target.value,' значенике');
     val[e.target.name]=!val[e.target.name]
     setValCompany(val)
     console.log('val ',val,val[e.target.name]);
@@ -55,29 +57,43 @@ const addFilt=()=>{
       setEndPrice(val)
     }
   }
+  const clearFilters=()=>{
+    setFiltComp({
+      'SAMSUNG':false,
+      'APPLE':false,
+      'XIAOMI':false,
+      'HUAWEI':false,
+      'ONEPLUS':false
+    })
+    setBeginPrice('')
+    setEndPrice('')
+    clearFilt()
+  }
+
  
 
   return (
-    <div className='filt'>
+    <div  className={openFilt&&screenWidth<=990?'filt-active':'filt'}>
+      {screenWidth<=990&&<div onClick={()=>closeFilt(true)} class="close"></div>}
         <p className='filt-title'>Производитель</p>
              <div className='filt-item'>
-            <input className='input-check' name="SAMSUNG" onChange={takeVal} type="checkbox" />
+            <input className='input-check' checked={filtComp.SAMSUNG} name="SAMSUNG" onChange={takeVal} type="checkbox" />
             <label className='filt-name'  >SAMSUNG</label>
             </div>
             <div className='filt-item'>
-            <input className='input-check' name="APPLE" onChange={takeVal}  type="checkbox" />
+            <input className='input-check'  checked={filtComp.APPLE} name="APPLE" onChange={takeVal}  type="checkbox" />
             <label className='filt-name'>APPLE</label>
             </div>
             <div className='filt-item'>
-            <input className='input-check' name="XIAOMI" onChange={takeVal}  type="checkbox" />
+            <input className='input-check' checked={filtComp.XIAOMI} name="XIAOMI" onChange={takeVal}  type="checkbox" />
             <label className='filt-name'>XIAOMI</label>
             </div>
             <div className='filt-item'>
-            <input className='input-check' name="HUAWEI" onChange={takeVal}  type="checkbox" />
+            <input className='input-check'  checked={filtComp.HUAWEI} name="HUAWEI" onChange={takeVal}  type="checkbox" />
             <label className='filt-name'>HUAWEI</label>
             </div>
             <div className='filt-item'>
-            <input className='input-check' name="ONEPLUS" onChange={takeVal}  type="checkbox" />
+            <input className='input-check' checked={filtComp.ONEPLUS} name="ONEPLUS" onChange={takeVal}  type="checkbox" />
             <label className='filt-name'>ONEPLUS</label>
             </div>
             <p className='filt-title'>Цена</p>
@@ -88,6 +104,7 @@ const addFilt=()=>{
             <input className='input-price' value={endPrice}  onChange={takeEnd} type="text" />
             </div>
             <button onClick={addFilt} className='cart-button btn-filt'>Применить</button>
+            <div onClick={clearFilters} className='clear-filt'>Очистить</div>
     </div>
   )
 }

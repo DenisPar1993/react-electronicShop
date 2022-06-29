@@ -5,7 +5,9 @@ import { callBackendAPI } from "../service";
 const initialState={
     watch:[],
     filterWatch:[],
-    priceFilter:null
+    priceFilter:null,
+    loading:false,
+    error:false
 }
 export const fetchWatch = createAsyncThunk(
     'watch/fetchWatch',
@@ -31,8 +33,20 @@ const watchSlice = createSlice({
         builder
                 .addCase(fetchWatch.fulfilled,(state,action)=>{
                     state.watch=action.payload;
+                    state.loading=false
                     
                 })
+                .addCase(fetchWatch.pending,(state,action)=>{
+                    
+                    state.error=false;
+                    state.loading = true
+                    
+                })
+                .addCase(fetchWatch.rejected,(state)=>{
+                    state.error=true;
+                    state.loading=false;
+                })
+               
                
     }
 })

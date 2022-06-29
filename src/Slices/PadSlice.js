@@ -5,7 +5,9 @@ import { callBackendAPI } from "../service";
 const initialState={
     pads:[],
     filterPads:[],
-    priceFilter:null
+    priceFilter:null,
+    loading:false,
+    error:false
 }
 export const fetchPads = createAsyncThunk(
     'main/fetchPads',
@@ -31,7 +33,16 @@ const padSlice = createSlice({
         builder
                 .addCase(fetchPads.fulfilled,(state,action)=>{
                     state.pads=action.payload;
+                    state.loading=false
                     
+                })
+                .addCase(fetchPads.pending,(state,action)=>{
+                    state.loading=true;
+                    state.error=false
+                })
+                .addCase(fetchPads.rejected,(state,action)=>{
+                    state.error=true;
+                    state.loading=false;
                 })
                
     }

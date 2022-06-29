@@ -5,7 +5,9 @@ import { callBackendAPI } from "../service";
 const initialState={
     music:[],
     filterMusic:[],
-    priceFilter:null
+    priceFilter:null,
+    loading:false,
+    error:false
 }
 export const fetchMusic = createAsyncThunk(
     'music/fetchMusic',
@@ -31,8 +33,18 @@ const musicSlice = createSlice({
         builder
                 .addCase(fetchMusic.fulfilled,(state,action)=>{
                     state.music=action.payload;
+                    state.loading=false
                     
                 })
+                .addCase(fetchMusic.pending,(state,action)=>{
+                    state.loading=true;
+                    state.error=false
+                })
+                .addCase(fetchMusic.rejected,(state,action)=>{
+                    state.error=true;
+                    state.loading=false;
+                })
+               
                
     }
 })

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAA;EACb,UAAU,EAAE,mBAAmB;EAC/B,UAAU,EAAE,KAAK;EACjB,OAAO,EAAE,IAAI;CAEhB;;AACD,AAAA,cAAc,CAAA;EACV,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,GAAG,EAAC,IAAI;EACR,MAAM,EAAE,MAAM;CACjB;;AACD,AAAA,aAAa,CAAA;EACT,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "gadgets-page.scss"
+    ],
+    "names": [],
+    "file": "gadgets-page.css"
+}

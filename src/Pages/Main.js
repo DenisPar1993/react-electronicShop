@@ -9,43 +9,108 @@ import { callBackendAPI } from '../service';
 import { fetchMain } from '../Slices/MainSlice';
 import { useDispatch,useSelector } from 'react-redux';
 import "slick-carousel/slick/slick.scss";
+import ErrorMessage from '../components/ErrorMessage';
 
 const Main = () => {
   const {mainArr}=useSelector(state=>state.main);
+  const fav=useSelector(state=>state.favorite.favorite)
  const dispatch= useDispatch();
   const settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 4,  
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    responsive:[
+      {
+        breakpoint: 1250,
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+        }
+    },
+    {
+      breakpoint: 990,
+      settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+      }
+  },
+  {
+    breakpoint: 800,
+    settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        arrows: false
+    }
+  },
+  {
+    breakpoint: 635,
+    settings: {
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
+        arrows: false,
+        infinite: false,
+
+    }
+  },
+  {
+    breakpoint: 430,
+    settings: {
+        slidesToShow: 1.2,
+        slidesToScroll: 1,
+        arrows: false,
+        infinite: true,
+
+    }
+  },
+  {
+    breakpoint: 350,
+    settings: {
+        slidesToShow: 1.1,
+        slidesToScroll: 1,
+        arrows: false,
+        infinite: false,
+
+    }
+  }
+    ]
   };
   const [resp, setResp] = useState(null)  
   useEffect(() => {
    dispatch(fetchMain())
 
 
-  }, [mainArr])
+  }, [])
   return (
     <div className='container'>
+    
 
       <div className="main-wrapper">
         <h2 className="title">Новинки</h2>
+        <div className='slide-wrapper'>
         <Slider {...settings}>
           {mainArr && mainArr.map((item, i) => {
             return (
-              <Cart key={i} name={item.name} price={item.price} img={item.img} />
+              <Cart key={i} fav={fav[item.id]} name={item.name} price={item.price} img={item.img} id={item.id} group={item.group} />
             )
           })}
-        </Slider>
 
+         
+        </Slider>
+        </div>
         <h2 className="title">Хиты продаж</h2>
+        
+        <div className='slide-wrapper'>
         <Slider {...settings}>
           {mainArr && mainArr.map((item, i) => {
             return (
-              <Cart key={i} name={item.name} price={item.price} img={item.img} />
+              <Cart key={i} fav={fav[item.id]} name={item.name} price={item.price} img={item.img} id={item.id}  />
             )
           })}
+
+         
         </Slider>
+        </div>
         <h2 className="title">Наши преимущесва</h2>
         <div className="main__benefit">
           <div className="main__benefit-item">
@@ -73,3 +138,7 @@ const Main = () => {
   )
 }
 export default Main
+
+
+
+
