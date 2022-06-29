@@ -1,5 +1,5 @@
 export const callBackendAPI = async (url) => {
-    const response = await fetch(url);
+    const response = await fetch(`${process.env.REACT_APP_API_URL}${url}`);
     const body = await response.json();
     if (response.status !== 200) {
       throw Error(body.message)
