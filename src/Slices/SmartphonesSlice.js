@@ -13,7 +13,7 @@ export const fetchSmartphones = createAsyncThunk(
     'smartphones/fetchSmartphones',
     async ()=>{
       
-     const ResponseMain=callBackendAPI('/smartphones')
+     const ResponseMain=callBackendAPI('smartphones')
       .then(res => res)
       .then(res => res)
       return ResponseMain;
