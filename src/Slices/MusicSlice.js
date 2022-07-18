@@ -13,7 +13,7 @@ export const fetchMusic = createAsyncThunk(
     'music/fetchMusic',
     async ()=>{
       
-     const ResponseMain=callBackendAPI('/music')
+     const ResponseMain=callBackendAPI('music')
       .then(res => res)
       .then(res => res)
       return ResponseMain;

@@ -102,10 +102,11 @@ const closeFilt=(value)=>{
         />
         {openFilt&&screenWidth<=990&&<img onClick={()=>setOpenFilt(!openFilt)} className='filt-button' src={filtIcon}/>}
                 {!openFilt&&<div
-                 className='blur'
+                 className='blur-filt'
                  
                  onClick={()=>setOpenFilt(!openFilt)}></div>}
         <div className="gadget__items">
+        {!watch.length&& <div className='empty-products'>Нет товара</div>}
         {watch && watch.map((item, i) => {
     return (
       <Cart key={i} id={item.id}  fav={fav[item.id]} name={item.name} price={item.price} img={item.img} group='watch' />

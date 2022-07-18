@@ -71,7 +71,7 @@ import { addFavorite } from '../Slices/FavoriteSlice'
                        </div>
                        <div className="descr-wrap__item">
                            <div className="descr-name__item">Объем оперативной памяти:</div>
-                           <div className="descr-value__item">{gadget.characteristics.ram}</div>
+                           <div className="descr-value__item">{gadget.characteristics.memory}</div>
                        </div>
                       
                        <div className="descr-wrap__item">

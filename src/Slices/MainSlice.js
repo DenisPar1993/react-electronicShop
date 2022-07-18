@@ -9,7 +9,7 @@ export const fetchMain = createAsyncThunk(
     'main/fetchMain',
     async ()=>{
       
-     const ResponseMain=callBackendAPI('/main')
+     const ResponseMain=callBackendAPI('main')
       .then(res => res)
       .then(res => res)
       return ResponseMain;

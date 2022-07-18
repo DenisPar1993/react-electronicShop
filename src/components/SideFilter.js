@@ -13,7 +13,7 @@ import { useState } from 'react';
     'APPLE':false,
     'XIAOMI':false,
     'HUAWEI':false,
-    'ONEPLUS':false
+    'VIVO':false
   })
 
 
@@ -46,12 +46,18 @@ const addFilt=()=>{
     
 }
   const takeBegin=(e)=>{
+    if(e.target.value==''){
+      setBeginPrice('')
+    }
     const val = +e.target.value;
     if(val && typeof val=="number"){
       setBeginPrice(val)
     }
   }
   const takeEnd=(e)=>{
+    if(e.target.value==''){
+      setEndPrice('')
+    }
     const val = +e.target.value;
     if(val && typeof val=="number"){
       setEndPrice(val)
@@ -93,8 +99,8 @@ const addFilt=()=>{
             <label className='filt-name'>HUAWEI</label>
             </div>
             <div className='filt-item'>
-            <input className='input-check' checked={filtComp.ONEPLUS} name="ONEPLUS" onChange={takeVal}  type="checkbox" />
-            <label className='filt-name'>ONEPLUS</label>
+            <input className='input-check' checked={filtComp.VIVO} name="VIVO" onChange={takeVal}  type="checkbox" />
+            <label className='filt-name'>VIVO</label>
             </div>
             <p className='filt-title'>Цена</p>
             <div className='filt-price'>

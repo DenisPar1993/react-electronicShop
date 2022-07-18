@@ -13,7 +13,7 @@ export const fetchWatch = createAsyncThunk(
     'watch/fetchWatch',
     async ()=>{
       
-     const ResponseMain=callBackendAPI('/watch')
+     const ResponseMain=callBackendAPI('watch')
       .then(res => res)
       .then(res => res)
       return ResponseMain;

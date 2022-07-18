@@ -109,6 +109,9 @@
 .header-tel {
     font-size: 20px;
 }
+.favorite__items {
+    justify-content: center;
+}
 }
 @media(max-width:850px){
     .basket__item{
@@ -219,6 +222,10 @@
     .descr-title-price {
         font-size: 21px;
     }
+    .cart-header {
+        right: -4px;
+        
+    }
 }
 @media(max-width:500px){
     .main-wrapper{
@@ -248,5 +255,8 @@
     .basket-fav{
         display: flex;
         flex-direction: column;
+    }
+    .cart-header {
+        top: 0;
     }
 }

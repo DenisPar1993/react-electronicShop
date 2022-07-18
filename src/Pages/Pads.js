@@ -105,10 +105,11 @@ useEffect(()=>{
                  />
                  {openFilt&&screenWidth<=990&&<img onClick={()=>setOpenFilt(!openFilt)} className='filt-button' src={filtIcon}/>}
                 {!openFilt&&<div
-                 className='blur'
+                 className='blur-filt'
                  
                  onClick={()=>setOpenFilt(!openFilt)}></div>}
                 <div className="gadget__items">
+                {!pads.length&& <div className='empty-products'>Нет товара</div>}
                 {pads && pads.map((item, i) => {
             return (
               <Cart

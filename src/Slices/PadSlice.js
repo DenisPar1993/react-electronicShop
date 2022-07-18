@@ -13,7 +13,7 @@ export const fetchPads = createAsyncThunk(
     'main/fetchPads',
     async ()=>{
       
-     const ResponseMain=callBackendAPI('/pads')
+     const ResponseMain=callBackendAPI('pads')
       .then(res => res)
       .then(res => res)
       return ResponseMain;

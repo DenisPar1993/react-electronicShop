@@ -72,7 +72,7 @@ import { addFavorite } from '../Slices/FavoriteSlice'
                        </div>
                        <div className="descr-wrap__item">
                            <div className="descr-name__item">Количество ядер:</div>
-                           <div className="descr-value__item">{gadget.characteristics.coreNumbers}</div>
+                           <div className="descr-value__item">{gadget.characteristics.coresNumber}</div>
                        </div>
                        <div className="descr-wrap__item">
                            <div className="descr-name__item">Частота процессора:</div>

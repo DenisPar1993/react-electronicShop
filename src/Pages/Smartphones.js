@@ -124,11 +124,12 @@ const Smartphones = () => {
                 />
                 {openFilt&&screenWidth<=990&&<img onClick={()=>setOpenFilt(!openFilt)} className='filt-button' src={filtIcon}/>}
                 {!openFilt&&<div
-                 className='blur'
+                 className='blur-filt'
                  
                  onClick={()=>setOpenFilt(!openFilt)}></div>}
-                 
+                 {!smartphones.length&& <div className='empty-products'>Нет товара</div>}
                 <div  className="gadget__items">
+                
                 {smartphones && smartphones.map((item, i) => {
             return (
               <Cart key={i} fav={fav[item.id]} name={item.name} price={item.price} img={item.img} id={item.id} group='gadget'/>

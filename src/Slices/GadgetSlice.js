@@ -12,7 +12,7 @@ const initialState={
     'gadget/fetchGadget',
     async (id)=>{
       
-     const ResponseMain=callBackendAPI(`/gadget/${id}`)
+     const ResponseMain=callBackendAPI(`gadget/${id}`)
       .then(res => res)
       .then(res => res)
       return ResponseMain;
